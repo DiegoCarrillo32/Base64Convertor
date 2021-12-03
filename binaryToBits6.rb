@@ -6,25 +6,26 @@ class BinaryToBits6
   def ConvertToBits6
     # faltaria revisar bien si sobran numeros de la cadena
     full_string = ConvertToBinaryChain()
-    puts full_string + ' String inicial'
-    inicio = 0
-    final = 5
-    contador = 0
 
-    
-    # x = 0
-    #
-    # b = 0
-    # e = -full_string.size+5
-    # while x < full_string.size
-    #
-    #   puts full_string[b..e]
-    #   b = b + 5
-    #   e = e + 5
-    #   x+=5
-    #
-    #
-    # end
+
+    contador = 0
+    bits6 = []
+    while contador < full_string.size
+      if full_string[contador, 6].size < 6
+        total_zeros = 6 - full_string[contador, 6].size
+        zeros = '0' * total_zeros
+        bits6.append(zeros + full_string[contador, 6])
+      else
+        bits6.append(full_string[contador, 6])
+
+      end
+
+
+
+      contador += 6
+    end
+    bits6
+
 
   end
 
