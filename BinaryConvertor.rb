@@ -13,8 +13,9 @@ class BinaryConvertor
         while contador < full_string.size
           if full_string[contador, 6].size < 6
             total_zeros = 6 - full_string[contador, 6].size
+
             zeros = '0' * total_zeros
-            bits6.append(zeros + full_string[contador, 6])
+            bits6.append(full_string[contador, 6] + zeros )
           else
             bits6.append(full_string[contador, 6])
     
@@ -40,7 +41,7 @@ class BinaryConvertor
 
       #merge con binary to decimal
   def ConvertToDecimal(binaries)
-
+    list_of_decimals = []
     binaries.each do |binary|
       decimal = 0
       reversed = binary.reverse
@@ -49,10 +50,15 @@ class BinaryConvertor
         if reversed[i] == "1"
           decimal = decimal + 2**i
 
+
         end
+
       end
-      puts decimal
+      list_of_decimals.append(decimal.to_s)
+
 
     end
+    list_of_decimals
 
+  end
 end

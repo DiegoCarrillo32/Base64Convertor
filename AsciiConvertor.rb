@@ -40,8 +40,9 @@ class AsciiConvertor
           end
           ascii = ascii / 2
         end
-        if current_ascii.size == 7
-          current_ascii = '0' + current_ascii
+        if current_ascii.size <= 8
+          current_ascii = '0' * (8 - current_ascii.size) + current_ascii
+
         end
     
         current_ascii
