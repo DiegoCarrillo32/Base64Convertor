@@ -73,7 +73,7 @@ Alphabet = {
   '61' => '9',
   '62' => '+',
   '63' => '/',
-  '64' => '='
+
 }
 encoded_string = ''
 for i in 0..list_of_decimals.length-1
