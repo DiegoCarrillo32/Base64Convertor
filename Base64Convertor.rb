@@ -68,7 +68,8 @@ class Base64Convertor
     '63' => '/',
 
   }
-
+  #tomando la lista de decimales para cada uno de estos se busca en el diccionario su respectiva clave
+  # y se va agregando al string para formal la cadena
   def ConvertDecimalsToBase64(list_of_decimals)
 
     encoded_string = ''
