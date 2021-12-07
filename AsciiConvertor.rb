@@ -1,28 +1,22 @@
-class AsciiConvertor
+module AsciiConvertor
 
-  #devuelve el valor de un simbolo en ascii
-    def toAscii(symbol)
+    def to_ascii(symbol)
       symbol.ord
     end
 
-  #separa un string en un arreglo de sus caracteres
-  # y busca el valor ascii de cada uno de ellos
-    def ChainToAscii(value_to)
+    def chain_to_ascii(value_to)
       separated_values = value_to.chars
       list_of_ascii = []
       separated_values.each do |char|
-        list_of_ascii.append(toAscii(char))
+        list_of_ascii.append(to_ascii(char))
       end
       list_of_ascii
     end
 
-
-  #convierte los valores ascii a un arreglo de binarios
-
-    def ConvertAsciiToBinary(ascii_list)
+    def convert_ascii_to_binary(ascii_list)
         binary_list = []
         ascii_list.each do |ascii|
-          result = AsciiToBinary(ascii)
+          result = ascii_to_binary(ascii)
           binary_list.append(result)
     
     
@@ -30,30 +24,35 @@ class AsciiConvertor
         binary_list
       end
 
-    #toma un valor ascii y saca su numero binario
-  # dividiebndo modularmente por 2 y agregando 0 o 1 en base al resultado
-      def AsciiToBinary(ascii)
-        
+      def ascii_to_binary(ascii)
         current_ascii = ''
         while ascii > 0
           if ascii % 2 == 0
             current_ascii = '0' + current_ascii
-    
           else
             current_ascii = '1' + current_ascii
-    
           end
+
           ascii = ascii / 2
         end
-        #si el tamano del string es menor a 8 se tiene que agregar los ceros restanbtes
-        # a la derecha del string
+
         if current_ascii.size <= 8
           current_ascii = '0' * (8 - current_ascii.size) + current_ascii
-
         end
     
         current_ascii
       end
-  
-  
+
+    #implement
+    def complete_bits(bits_amount, binary_list)
+      new_binary_list = []
+      binary_list.each do |binary|
+        if binary.size < bits_amount
+          new_binary_list.append('0' * (bits_amount - binary.size)+ binary)
+        end
+      end
+      new_binary_list
+    end
+
+
   end

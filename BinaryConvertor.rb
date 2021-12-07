@@ -1,37 +1,34 @@
-class BinaryConvertor
-    # Merge with old binaryToBits6 methods
+module BinaryConvertor
+  NO_OF_BITS = 6
+  def reverse(chain)
+    counter = chain.size-1
+    reversed_chain = ''
+    while counter >= 0
+      reversed_chain += chain[counter]
+      counter -= 1
+    end
 
+    reversed_chain
+  end
 
-
-    def ConvertToBits6(binaries)
-        # faltaria revisar bien si sobran numeros de la cadena
-        full_string = ConvertToBinaryChain(binaries)
-    
-    
-        contador = 0
+    def convert_to_bits6(binaries)
+        full_string = convert_to_binary_chain(binaries)
+        counter = 0
         bits6 = []
-        while contador < full_string.size
-          if full_string[contador, 6].size < 6
-            total_zeros = 6 - full_string[contador, 6].size
-
+        while counter < full_string.size
+          if full_string[counter, NO_OF_BITS].size < 6
+            total_zeros = 6 - full_string[counter, NO_OF_BITS].size
             zeros = '0' * total_zeros
-            bits6.append(full_string[contador, 6] + zeros )
+            bits6.append(full_string[counter, NO_OF_BITS] + zeros)
           else
-            bits6.append(full_string[contador, 6])
-    
+            bits6.append(full_string[counter, NO_OF_BITS])
           end
-    
-    
-    
-          contador += 6
+          counter += 6
         end
         bits6
-    
-    
       end
-    
-    
-      def ConvertToBinaryChain(binaries)
+
+      def convert_to_binary_chain(binaries)
         binary_chain = ''
         binaries.each do |binary|
           binary_chain = binary_chain + binary
@@ -39,24 +36,20 @@ class BinaryConvertor
         binary_chain
       end
 
-      #merge con binary to decimal
-  def ConvertToDecimal(binaries)
+  def convert_to_decimal(binaries)
     list_of_decimals = []
     binaries.each do |binary|
       decimal = 0
-      reversed = binary.reverse
+      reversed = reverse(binary)
 
       for i in 0..reversed.length-1
         if reversed[i] == "1"
           decimal = decimal + 2**i
-
-
         end
 
       end
+
       list_of_decimals.append(decimal.to_s)
-
-
     end
     list_of_decimals
 
